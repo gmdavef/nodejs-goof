@@ -1,0 +1,36 @@
+name: OSS Safety Check with RL-Protect
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  OSS-Check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v6.2.0
+        with:
+          python-version: 3.14
+          check-latest: true
+          pip-version: 26.0.1
+          pip-install: rl-protect
+
+      - name: OSS Safety Check
+        env: 
+          RL_COMM_TOK: ${{ secrets.RL_COMMUNITY_TOKEN }}
+          RL_PORTAL_TOK: ${{ secrets.RL_PORTAL_TOKEN }}
+          RL_PORTAL_SERV: ${{ secrets.RL_PORTAL_SERVER }}
+          RL_PORTAL_ORG: ${{ secrets.RL_PORTAL_ORGANIZATION }}
+          RL_PORTAL_GRP: ${{ secrets.RLT_PORTAL_GROUP }}
+        run: |
+          rl-protect --version
+          
+          # Scan via Portal API token
+          # rl-protect scan --rl-token="${RL_PORTAL_TOK}" --rl-portal-server="${RL_PORTAL_SERV}" --rl-portal-org="${RL_PORTAL_ORG}" --rl-portal group="${RL_PORTAL_GRP}"
+          
+          # Scan via free Community API token
+          rl-protect scan --scan-path=package.json --rl-token="${RL_COMM_TOK}" --return-status
+
+
