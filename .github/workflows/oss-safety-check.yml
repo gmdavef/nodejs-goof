@@ -25,7 +25,9 @@ jobs:
           RL_PORTAL_GRP: ${{ secrets.RLT_PORTAL_GROUP }}
         run: |
           pwd
+          ls -la
           rl-protect --version
+          ls .. -la
           
           # Scan via Portal API token
           # rl-protect scan --rl-token="${RL_PORTAL_TOK}" --rl-portal-server="${RL_PORTAL_SERV}" --rl-portal-org="${RL_PORTAL_ORG}" --rl-portal group="${RL_PORTAL_GRP}"
