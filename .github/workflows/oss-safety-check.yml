@@ -14,7 +14,6 @@ jobs:
         with:
           python-version: 3.14
           check-latest: true
-          pip-version: 26.0.1
           pip-install: rl-protect
 
       - name: OSS Safety Check
@@ -25,12 +24,13 @@ jobs:
           RL_PORTAL_ORG: ${{ secrets.RL_PORTAL_ORGANIZATION }}
           RL_PORTAL_GRP: ${{ secrets.RLT_PORTAL_GROUP }}
         run: |
+          pwd
           rl-protect --version
           
           # Scan via Portal API token
           # rl-protect scan --rl-token="${RL_PORTAL_TOK}" --rl-portal-server="${RL_PORTAL_SERV}" --rl-portal-org="${RL_PORTAL_ORG}" --rl-portal group="${RL_PORTAL_GRP}"
           
           # Scan via free Community API token
-          rl-protect scan --scan-path=package.json --rl-token="${RL_COMM_TOK}" --return-status
+          rl-protect scan --scan-path=./package.json --rl-token="${RL_COMM_TOK}" --return-status
 
 
