@@ -25,7 +25,6 @@ jobs:
           RL_PORTAL_TOK: ${{ secrets.RL_PORTAL_TOKEN }}
           RL_PORTAL_SRV: ${{ secrets.RL_PORTAL_SERVER }}
           RL_PORTAL_ORG: ${{ secrets.RL_PORTAL_ORGANIZATION }}
-          RL_PORTAL_GRP: ${{ secrets.RL_PORTAL_GROUP }}
         run: |
           # Check version of RL-Protect
           rl-protect --version
