@@ -30,9 +30,9 @@ jobs:
           rl-protect --version
           
           # Scan via Portal API
-          # rl-protect scan --scan-path=package.json --rl-token="${RL_PORTAL_TOK}" --rl-portal-server="${RL_PORTAL_SRV}" --rl-portal-org="${RL_PORTAL_ORG}" --return-status         
+          rl-protect scan --scan-path=package.json --rl-token="${RL_PORTAL_TOK}" --rl-portal-server="${RL_PORTAL_SRV}" --rl-portal-org="${RL_PORTAL_ORG}" --return-status         
           
           # Scan via free Community API
-          rl-protect scan --scan-path=package.json --rl-token="${RL_COMM_TOK}" --return-status
+          # rl-protect scan --scan-path=package.json --rl-token="${RL_COMM_TOK}" --return-status
 
 
