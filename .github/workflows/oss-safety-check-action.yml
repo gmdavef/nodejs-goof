@@ -21,12 +21,12 @@ jobs:
           RL_PORTAL_ORG: ${{ secrets.RL_PORTAL_ORGANIZATION }}
         with:        
           # If using Portal API
-          rl-token: '${RL_PORTAL_TOK}'
-          rl-server: '${RL_PORTAL_SRV}'
-          rl-org: '${RL_PORTAL_ORG}'
+          rl-token: ${env.RL_PORTAL_TOK}
+          rl-server: ${env.RL_PORTAL_SRV}
+          rl-org: ${env.RL_PORTAL_ORG}
           # If using Community API
-          # rl-token: '{RL_COMM_TOK}'
-          scan-path: 'package.json'
-          report: 'oss-safety-report.json'
-          log-file: 'rl-protect.log'
-          log-level: 'warning'
+          # rl-token: {env.RL_COMM_TOK}
+          scan-path: package.json
+          report: oss-safety-report.json
+          log-file: rl-protect.log
+          log-level: warning
