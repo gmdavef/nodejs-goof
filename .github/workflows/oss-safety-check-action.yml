@@ -1,0 +1,32 @@
+name: OSS Safety Check via RL Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  OSS-Check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out 
+        uses: actions/checkout@v6
+        
+      - name: OSS Safety Check
+        uses: reversinglabs/gh-action-rl-protect-scan@v1
+        env:
+          RL_COMM_TOK: ${{ secrets.RL_COMMUNITY_TOKEN }}
+          RL_PORTAL_TOK: ${{ secrets.RL_PORTAL_TOKEN }}
+          RL_PORTAL_SRV: ${{ secrets.RL_PORTAL_SERVER }}
+          RL_PORTAL_ORG: ${{ secrets.RL_PORTAL_ORGANIZATION }}
+        with:        
+          # If using Portal API
+          rl-token: '${RL_PORTAL_TOK}'
+          rl-server: '${RL_PORTAL_SRV}'
+          rl-org: '${RL_PORTAL_ORG}'
+          # If using Community API
+          # rl-token: '{RL_COMM_TOK}'
+          scan-path: 'package.json'
+          report: 'oss-safety-report.json'
+          log-file: 'rl-protect.log'
+          log-level: 'warning'
