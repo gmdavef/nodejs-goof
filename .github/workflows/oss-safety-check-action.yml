@@ -15,13 +15,15 @@ jobs:
       - name: OSS Safety Check
         uses: reversinglabs/gh-action-rl-protect-scan@v1
         env:
-          RL_COMM_TOK: ${{ secrets.RL_COMMUNITY_TOKEN }}
-          RL_PORTAL_TOK: ${{ secrets.RL_PORTAL_TOKEN }}
+          # If using Portal API
+          RL_TOKEN: ${{ secrets.RL_PORTAL_TOKEN }}
           RL_PORTAL_SRV: ${{ secrets.RL_PORTAL_SERVER }}
           RL_PORTAL_ORG: ${{ secrets.RL_PORTAL_ORGANIZATION }}
+          # If using Community API
+          # RL_TOKEN: ${{ secrets.RL_COMMUNITY_TOKEN }}
         with:        
           # If using Portal API
-          rl-token: ${{env.RL_PORTAL_TOK}}
+          # rl-token: ${{env.RL_PORTAL_TOK}}
           rl-server: ${{env.RL_PORTAL_SRV}}
           rl-org: ${{env.RL_PORTAL_ORG}}
           # If using Community API
