@@ -31,3 +31,12 @@ jobs:
           log-file: rl-protect.log
           log-level: warning
           verbose: true
+
+      - name: Archive Report
+        if: success() || failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: oss-safety-report
+          path: |
+            ./oss-safety-report.json
+            ./rl-protect.log
