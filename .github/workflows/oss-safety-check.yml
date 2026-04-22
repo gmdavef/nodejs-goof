@@ -45,6 +45,6 @@ jobs:
         if: success() || failure()
         uses: actions/upload-artifact@v6
         with:
-          name: oss-safety-report.json
+          name: OSS Safety Report
           path: ./oss-safety-report.json
 
