@@ -16,21 +16,22 @@ jobs:
         uses: reversinglabs/gh-action-rl-protect-scan@v1
         env:
           # If using Portal API
-          # RL_TOKEN: ${{ secrets.RL_PORTAL_TOKEN }}
-          # RL_PORTAL_SRV: ${{ secrets.RL_PORTAL_SERVER }}
-          # RL_PORTAL_ORG: ${{ secrets.RL_PORTAL_ORGANIZATION }}
+          RL_TOKEN: ${{ secrets.RL_PORTAL_TOKEN }}
+          RL_PORTAL_SRV: ${{ secrets.RL_PORTAL_SERVER }}
+          RL_PORTAL_ORG: ${{ secrets.RL_PORTAL_ORGANIZATION }}
           # If using Community API
-          RL_TOKEN: ${{ secrets.RL_COMMUNITY_TOKEN }}
+          # RL_TOKEN: ${{ secrets.RL_COMMUNITY_TOKEN }}
         with:        
-          # rl-server: ${{env.RL_PORTAL_SRV}}
-          # rl-org: ${{env.RL_PORTAL_ORG}}
+          rl-server: ${{env.RL_PORTAL_SRV}}
+          rl-org: ${{env.RL_PORTAL_ORG}}
           scan-path: package.json
-          check-deps: release,transitive
-          transitive-depth: 3
+          scan-profile: baseline
+          check-deps: release
+          # transitive-depth: 3
           report: oss-safety-report.json
           log-file: rl-protect.log
           log-level: warning
-          verbose: true
+          # verbose: true
 
       - name: Archive Report
         if: success() || failure()
