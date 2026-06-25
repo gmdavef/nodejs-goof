@@ -37,7 +37,7 @@ jobs:
           
           # Scan via free Community API
           rl-protect scan \
-            --scan-path=package.json --scan-profile=baseline --fail-only --check-deps=development,release,transitive \
+            --scan-path=package.json --scan-profile=baseline --fail-only --check-deps=develop,release,transitive \
             --transitive-depth=5 --save-report=oss-safety-report.json --no-tracking --return-status \
             --rl-token="${RL_COMM_TOK}"
 
