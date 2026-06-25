@@ -30,16 +30,16 @@ jobs:
           rl-protect --version
           
           # Scan via Portal API
-          rl-protect scan \
-            --scan-path=package.json --scan-profile=baseline --fail-only --check-deps=release,transitive \
-            --transitive-depth=1 --save-report=oss-safety-report.json --no-tracking --return-status \
-            --rl-token="${RL_PORTAL_TOK}" --rl-portal-server="${RL_PORTAL_SRV}" --rl-portal-org="${RL_PORTAL_ORG}"
-          
-          # Scan via free Community API
           # rl-protect scan \
           #   --scan-path=package.json --scan-profile=baseline --fail-only --check-deps=release,transitive \
           #   --transitive-depth=1 --save-report=oss-safety-report.json --no-tracking --return-status \
-          #   --rl-token="${RL_COMM_TOK}"
+          #   --rl-token="${RL_PORTAL_TOK}" --rl-portal-server="${RL_PORTAL_SRV}" --rl-portal-org="${RL_PORTAL_ORG}"
+          
+          # Scan via free Community API
+          rl-protect scan \
+            --scan-path=package.json --scan-profile=baseline --fail-only --check-deps=development,release,transitive \
+            --transitive-depth=5 --save-report=oss-safety-report.json --no-tracking --return-status \
+            --rl-token="${RL_COMM_TOK}"
 
       - name: Archive Report
         if: success() || failure()
